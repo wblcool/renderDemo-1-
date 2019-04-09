@@ -4,7 +4,8 @@ var app = new Vue({
         columns : [
             {
                 title : "姓名",
-                key : "name"
+                key : "name",
+                width : "10%" //100px
             },
             {
                 title : "年龄",

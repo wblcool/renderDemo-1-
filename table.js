@@ -77,6 +77,7 @@ Vue.component("vTable", {
         var _this = this;
         var ths = [];
         var trs = [];
+        var cols = [];
         //组合表格中的主题内容
         this.currentData.forEach(function(row){
             var tds = [];
@@ -88,6 +89,7 @@ Vue.component("vTable", {
         
 
         this.currentColumns.forEach(function(col, index){
+            
             if(col.sortable){
                 ths.push(h("th", [
                     h("span", col.title),
@@ -117,9 +119,26 @@ Vue.component("vTable", {
             }else{
                 ths.push(h("th", col.title));
             }
+
+            cols.push(h("col", {
+                attrs : {
+                    width : col.width
+                }
+            }));
+            // if(col.width){
+            //     cols.push(h("col", {
+            //         attrs : {
+            //             width : col.width
+            //         }
+            //     }));
+            // }else{
+            //     cols.push(h("col"));
+            // }
+            
         });
 
         return h("table", [
+            h("colgroup", cols),
             h("thead", [
                 h("tr", ths)
             ]),
